@@ -1,0 +1,16 @@
+{
+  "name": "antigravity-bridge-server",
+  "version": "1.0.0",
+  "description": "Bridge server for Antigravity Mobile Companion",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "ws": "^8.16.0"
+  }
+}
