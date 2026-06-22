@@ -8,9 +8,10 @@ import os from 'os';
 import chokidar from 'chokidar';
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3050;
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
 const ANTIGRAVITY_ROOT = path.join(os.homedir(), '.gemini', 'antigravity');
 const BRAIN_DIR = path.join(ANTIGRAVITY_ROOT, 'brain');

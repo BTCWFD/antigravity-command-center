@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antigravity Command Center</title>
+  <!-- Google Fonts Outfit & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-logo">
+        <i data-lucide="radar"></i>
+      </div>
+      <div class="brand-text">
+        <h1>ANTIGRAVITY</h1>
+        <span>COMMAND CENTER</span>
+      </div>
+    </div>
+    
+    <div class="connection-status">
+      <div class="status-dot" id="statusDot"></div>
+      <span id="statusText">Conectando...</span>
+    </div>
+  </header>
+
+  <!-- Layout Principal -->
+  <div class="main-container">
+    <!-- Sidebar Telemetría -->
+    <aside>
+      <div class="card">
+        <span class="card-title">Conversación Activa</span>
+        <div class="conversation-id" id="activeConv">Buscando...</div>
+      </div>
+
+      <div class="card">
+        <span class="card-title">Métricas del Servidor</span>
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <span class="metric-label">CPU</span>
+            <span class="metric-value" id="cpuVal">0%</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">RAM</span>
+            <span class="metric-value" id="ramVal">0 MB</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Total Tareas</span>
+            <span class="metric-value" id="tasksVal">0</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Completadas</span>
+            <span class="metric-value" id="doneVal">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="flex: 1; display: flex; flex-direction: column;">
+        <span class="card-title">Tareas (task.md)</span>
+        <div class="task-list" id="taskList">
+          <!-- Dinámico -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- Workspace Terminal / Consola -->
+    <main>
+      <!-- Feedback Request Banner (Oculto por defecto) -->
+      <div class="feedback-panel" id="feedbackPanel" style="display: none;">
+        <div class="feedback-header">
+          <i data-lucide="alert-triangle"></i>
+          <span>EL AGENTE REQUIERE TU APROBACIÓN O INSTRUCCIONES</span>
+        </div>
+        <div class="feedback-input-row">
+          <input type="text" id="feedbackInput" placeholder="Introduce tu instrucción o haz clic en Aprobar...">
+          <button id="feedbackBtnApprove" style="background: var(--success);">APROBAR</button>
+          <button id="feedbackBtnSend" style="background: var(--primary);">ENVIAR</button>
+        </div>
+      </div>
+
+      <!-- Terminal logs -->
+      <div class="terminal-container">
+        <div class="terminal-header">
+          <div class="terminal-tabs">
+            <button class="terminal-tab active" id="tabLogs">CONSOLA EN VIVO</button>
+          </div>
+          <span style="font-size: 11px; color: var(--text-secondary); font-family: monospace;">output_stream: transcript.jsonl</span>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+          <div class="log-line success">=== Terminal de Enlace Web Antigravity iniciada ===</div>
+          <div class="log-line info">Estableciendo WebSocket con el backend local...</div>
+        </div>
+      </div>
+
+      <!-- Barra de comandos -->
+      <div class="input-bar">
+        <input type="text" id="cmdInput" placeholder="Escribe un prompt para arrancar una nueva tarea o instruir al enjambre...">
+        <button id="cmdBtn"><i data-lucide="play"></i></button>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
