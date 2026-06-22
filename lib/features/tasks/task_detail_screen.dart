@@ -42,6 +42,9 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
             'level': log['level'],
             'stepIndex': log['stepIndex'],
           });
+          if (_logs.length > 1000) {
+            _logs.removeRange(0, _logs.length - 1000);
+          }
         });
         _scrollToBottom();
       } else if (msg['type'] == 'tasks_update') {
@@ -68,6 +71,9 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
       final logs = await widget.client.getLogs();
       setState(() {
         _logs.addAll(logs.cast<Map<String, dynamic>>());
+        if (_logs.length > 1000) {
+          _logs.removeRange(0, _logs.length - 1000);
+        }
       });
       _scrollToBottom();
     } catch (_) {
